@@ -55,14 +55,14 @@
       "typeVersion": 1,
       "credentials": {
         "youTubeOAuth2Api": {
-          "id": "B500WcGCRUFzV6xR",
+          "id": "YOUTUBE_CREDENTIAL_ID",
           "name": "YouTube account"
         }
       }
     },
     {
       "parameters": {
-        "driveId": "1PfofSE_nmNQD_V6oqGIdpkKWbxJiTbU6",
+        "driveId": "GOOGLE_DRIVE_ID",
         "title": "={{ $json.title }}"
       },
       "type": "n8n-nodes-base.googleDocs",
@@ -75,7 +75,7 @@
       "name": "Google Docs",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "dPKq0zs6HGSRB4rl",
+          "id": "GOOGLE_DOCS_CREDENTIAL_ID",
           "name": "Google Docs account"
         }
       }
@@ -100,7 +100,7 @@
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "tGXXgL9C3vwmvdkT",
+          "id": "OPENAI_CREDENTIAL_ID",
           "name": "OpenAi account"
         }
       }
@@ -108,7 +108,7 @@
     {
       "parameters": {
         "operation": "update",
-        "documentURL": "=1RNFHhYflMM_lWvSUajCOdWAgdFoGIog6mR1GyLYstTc\n",
+        "documentURL": "GOOGLE_DOCS_URL",
         "actionsUi": {
           "actionFields": [
             {
@@ -153,7 +153,7 @@
       "name": "Google Docs1",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "dPKq0zs6HGSRB4rl",
+          "id": "GOOGLE_DOCS_CREDENTIAL_ID",
           "name": "Google Docs account"
         }
       }
@@ -246,7 +246,7 @@
         "promptType": "define",
         "text": "=Transcript:\n{{ Array.isArray($json.data) ? $json.data.map(d => d.text).join(\" \") : \"No transcript data available.\" }}\n\nInstructions:\nUsing the transcript above, generate a clean, structured Markdown document with the following format:\n\n# [Your AI-Generated Title Here]  \n(Create a clear, relevant title based on the video content.)\n\n## Introduction  \nWrite a brief paragraph summarizing the topic and context of the video in 2–3 sentences.\n\n## Key Insights from the Video  \nPresent the key points or steps as bullet points. Use a hyphen (`-`) at the start of each line.\n\n## Additional Insights  \nBased on the transcript, provide your own AI-generated insights or takeaways to help the reader understand the significance or application of the topic.\n\nAt the end, include a Markdown-style clickable link to the video segment using this format:\n[Watch the full segment here](https://www.youtube.com/watch?v={{ $json.videoId || 'VIDEO_ID' }}&t={{ Math.floor($json.data[0].offset || 0) }}s)\n",
         "options": {
-          "systemMessage": "You are a helpful assistant that transforms video transcript segments into structured, well-written documents. The documents should preserve the speaker’s message, improve clarity, and organize information into logical sections. "
+          "systemMessage": "You are a helpful assistant that transforms video transcript segments into structured, well-written documents. The documents should preserve the speaker's message, improve clarity, and organize information into logical sections. "
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
